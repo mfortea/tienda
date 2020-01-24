@@ -11,4 +11,4 @@ mongoose.connect("mongodb+srv://mateo:mateo@cluster0-ieryg.mongodb.net/tienda?re
 app.use(express.json());    // IMPORTANTE: Poner esto antes de las rutas
 app.use('/api', apiRoutes);
 
-app.listen(3000, () => console.log("Servidor iniciado..."));
+app.listen(process.env.PORT || 3000, () => console.log("Servidor iniciado..."));
