@@ -2,13 +2,13 @@ const express = require('express');
 const mongoose = require('mongoose');
 const apiRoutes = require('./routes.js')
 
-mongoose.connect("mongodb://localhost:27017/tienda", { useNewUrlParser: true })
+const app = express();
+
+mongoose.connect("mongodb+srv://mateo:mateo@cluster0-ieryg.mongodb.net/tienda?retryWrites=true&w=majority", { useNewUrlParser: true })
 .then( db => console.log("Conexión a BD correcta") )
 .catch( error => console.log("Error al conectarse a la BD" + error));
 
-const app = express();
-
-app.listen(3000, () => console.log("Servidor iniciado..."));
-
 app.use(express.json());    // IMPORTANTE: Poner esto antes de las rutas
 app.use('/api', apiRoutes);
+
+app.listen(3000, () => console.log("Servidor iniciado..."));
